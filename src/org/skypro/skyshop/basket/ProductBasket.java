@@ -29,19 +29,18 @@ public class ProductBasket {
     }
 
     public boolean findProduct(String productName) {
+        if (productsElements == null) {
+            System.out.println("В корзине нет товаров для сравнения!");
+            return false;
+        }
         for (Product product : productsElements) {
-            if (productsElements == null) {
-                System.out.println("В корзине нет товаров для сравнения!");
-                return false;
-            } else if (productName.equalsIgnoreCase(product.getName())) {
+            if (productName.equalsIgnoreCase(product.getName())) {
                 System.out.println("Этот товар есть в корзине");
                 return true;
-            } else {
-                System.out.println("Такого товара нет в корзине");
-                return false;
             }
         }
-        return true;
+        System.out.println("Такого товара нет в корзине");
+        return false;
     }
 
 
@@ -53,7 +52,8 @@ public class ProductBasket {
             } else {
                 System.out.println(productsElements[i]);
             }
-        } System.out.println("Сумма стоимости товаров: " + getTotalCost());
+        }
+        System.out.println("Сумма стоимости товаров: " + getTotalCost());
     }
 
     public void clearBasket() {
